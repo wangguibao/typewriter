@@ -1,4 +1,4 @@
 typewriter
 ==========
 
-Javascript Typewriter game for my cusion to practice his typing speed/skills.
+Javascript Typewriter game for my nephew to practice his typing speed/skills :-)
