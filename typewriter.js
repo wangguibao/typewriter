@@ -4,7 +4,7 @@ var LINEWIDTH = 1;
 var LEFTMARGIN = 10;
 var BACKGROUNDCOLOR = "#F9EDA4";
 var TEXTCOLOR = '#FF0000';
-var MANUALTEXTCOLOR = '#000000';
+var MANUALTEXTCOLOR = '#004A00';
 var WRONGTEXTCOLOR = TEXTCOLOR;
 var HORIZONTALLINECOLOR = '#A0B798';
 var VERTICALLINECOLOR = TEXTCOLOR;
@@ -123,7 +123,9 @@ function onKeyDown(event) {
        context2D.fillStyle = BACKGROUNDCOLOR;
        context2D.fillText('_', xPos, yPos);
        
-       currentCharacterCount--;
+       if (currentCharacterCount > 0) {
+            currentCharacterCount--;
+       }
        updateProgressBar();
        
        if (currentCharacterCountInRow == 0 && currentRow != 0) {
