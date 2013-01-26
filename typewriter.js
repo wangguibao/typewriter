@@ -3,8 +3,11 @@ var ROWSTART = 30;
 var LINEWIDTH = 1;
 var LEFTMARGIN = 10;
 var BACKGROUNDCOLOR = "#F9EDA4";
-var TEXTCOLOR = '#000000';
-var WRONGTEXTCOLOR = '#FF0000';
+var TEXTCOLOR = '#FF0000';
+var MANUALTEXTCOLOR = '#000000';
+var WRONGTEXTCOLOR = TEXTCOLOR;
+var HORIZONTALLINECOLOR = '#A0B798';
+var VERTICALLINECOLOR = TEXTCOLOR;
 var gameLevel = 1;
 var xPos;
 var yPos;
@@ -44,7 +47,7 @@ function init() {
 function initTypewriter() {
 	context2D.clearRect(0, 0, canvas.width, canvas.height);
     context2D.lineWidth = LINEWIDTH;
-    context2D.strokeStyle = '#A0B798';
+    context2D.strokeStyle = HORIZONTALLINECOLOR;
     
     var y;
     for (y = ROWSTART; y <= canvas.height; y += ROWHEIGHT * 2) {
@@ -54,7 +57,7 @@ function initTypewriter() {
     }
     
     context2D.beginPath();
-    context2D.strokeStyle = '#FF0000';
+    context2D.strokeStyle = VERTICALLINECOLOR;
     context2D.moveTo(LEFTMARGIN, 0);
     context2D.lineTo(LEFTMARGIN, canvas.height);
     context2D.stroke();
@@ -64,7 +67,7 @@ function drawText(level) {
     var n;
     var y = ROWSTART;
 
-    context2D.fillStyle = 'red';
+    context2D.fillStyle = TEXTCOLOR;
     context2D.beginPath();
 
     txt = text[level];
@@ -80,14 +83,14 @@ function resetCursor() {
     xPos = LEFTMARGIN;
     yPos = ROWSTART + ROWHEIGHT;
     currentRow = 0;
-    context2D.fillStyle = TEXTCOLOR;
+    context2D.fillStyle = MANUALTEXTCOLOR;
     context2D.fillText('_', xPos, yPos);
 }
 
 function onKeyPress(event) {
     context2D.fillStyle = BACKGROUNDCOLOR;
     context2D.fillText('_', xPos, yPos);
-    context2D.fillStyle = TEXTCOLOR;
+    context2D.fillStyle = MANUALTEXTCOLOR;
     
     if (String.fromCharCode(event.keyCode) != txt[currentCharacterCount]) {
         context2D.fillStyle = WRONGTEXTCOLOR;
@@ -138,7 +141,7 @@ function onKeyDown(event) {
         context2D.fillStyle = BACKGROUNDCOLOR;
         context2D.fillRect(xPos + 1, yPos - (ROWHEIGHT - 5), characterWidth, ROWHEIGHT);
         context2D.stroke();
-        context2D.fillStyle = TEXTCOLOR;
+        context2D.fillStyle = MANUALTEXTCOLOR;
         context2D.fillText('_', xPos, yPos);
         context2D.restore();
     }
