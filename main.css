@@ -13,12 +13,12 @@ ul {list-style-type: none;}
 }
 
 #main #li_left {
-	width: 60%;
+	width: 62%;
 	float: left;
 }
 
 #main #li_right {
-	width: 35%;
+	width: 38%;
 	float: right;
 }
 #progress {
