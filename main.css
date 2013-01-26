@@ -1,0 +1,31 @@
+body { font-family: Arial, Helvetica, sans-serif;}
+ul {list-style-type: none;}
+#canvas {
+	margin: 0 auto 0 auto;
+}
+#main {
+	top: 0em;
+	margin: 0 auto 0 auto;
+}
+#main ul {
+	width: 100%;
+	float: left;
+}
+
+#main #li_left {
+	width: 60%;
+	float: left;
+}
+
+#main #li_right {
+	width: 35%;
+	float: right;
+}
+#progress {
+	top: 0em;
+}
+#progress div {
+    background-color: #ff0000;
+    width: 0;
+    height: 5px;
+}
