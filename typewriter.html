@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
 <head>
-    <title>Javascript Typewriter</title>
+    <title>打字机游戏 - Javascript Typewriter</title>
     <link rel="stylesheet" type="text/css" href="main.css">
     <script type="text/javascript" src="text.js"></script>
     <script type="text/javascript" src="typewriter.js"></script>
@@ -9,7 +9,8 @@
 <body>
     <div>
         <div>
-            <h1>Javascript Typewriter</h1>
+            <h1>王利岩的打字机 - Javascript Typewriter</h1>
+            <h2>安徒生童话 丑小鸭</h2>
         </div>
         <div id="main">
             <ul>
@@ -21,7 +22,10 @@
                     </canvas>
                     <div id = "progress" width = "600"><div></div></div>
                 </li>
-                <li id="li_right"><p>Wang Liyan</p></li>
+                <li id="li_right"><p>打字机</p></li>
+                <li><p id="time"></p></li>
+                <li><p id="score"></p></li>
+                <li><button type="button" onclick="javascript:onButtonClick();" id="startbutton">开始</button></li>
             </ul>
         </div>
     </div>
