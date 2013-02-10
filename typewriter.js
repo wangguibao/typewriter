@@ -18,6 +18,10 @@ var totalCharacterCount;
 var currentCharacterCountInRow;
 var currentRow;
 var txt;
+var seconds;
+var status = 0;	/* 0: pause; 1: running */
+var timer;
+var score;
 
 window.onload = init;
 function init() {
@@ -41,7 +45,16 @@ function init() {
     document.body.addEventListener("keypress", onKeyPress, false);
     document.body.addEventListener("keydown", onKeyDown, false);
     document.addEventListener("keydown", onDocumentKeyDown, false);
-
+    
+    seconds = 0;
+    score = 0;
+    status = 0;
+    var p = document.getElementById("score");
+    p.innerHTML = "";
+    p = document.getElementById("time");
+    p.innerHTML = "";
+    p = document.getElementById("startbutton");
+    p.innerHTML = "开始";
 }
 
 function initTypewriter() {
@@ -95,6 +108,10 @@ function onKeyPress(event) {
     if (String.fromCharCode(event.keyCode) != txt[currentCharacterCount]) {
         context2D.fillStyle = WRONGTEXTCOLOR;
     }
+    else {
+    	score += 10;
+    	updateScore();
+    }
     context2D.fillText(String.fromCharCode(event.keyCode), xPos, yPos);
     currentCharacterCountInRow++;
     currentCharacterCount++;
@@ -114,7 +131,8 @@ function onKeyPress(event) {
     if (currentCharacterCount >= totalCharacterCount) {
         alert("Game passed!");
         //gameLevel++;
-        //init();
+        init();
+        clearInterval(timer);
     }
 }
 
@@ -159,4 +177,35 @@ function updateProgressBar() {
     var div = document.getElementById("progress");
     var progressBar = div.getElementsByTagName("div")[0];
     progressBar.style.width = Math.ceil(currentCharacterCount * 100 / totalCharacterCount) + "%";
+}
+
+function updateTime()
+{
+	var p = document.getElementById("time");
+	p.innerHTML = seconds + "秒";
+	seconds += 1;
+}
+
+function onButtonClick()
+{
+	if (status == 0) {
+		status = 1;
+	    timer = setInterval(updateTime, 1000);
+	    
+	    var p = document.getElementById("startbutton");
+	    p.innerHTML = "暂停";
+    }
+    else {
+    	status = 0;
+  		clearInterval(timer);
+	    var p = document.getElementById("startbutton");
+	    p.innerHTML = "开始";
+    }
+    
+}
+
+function updateScore()
+{
+	var p = document.getElementById("score");
+	p.innerHTML = score + "分";
 }
